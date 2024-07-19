@@ -38,3 +38,9 @@ services:
         volumes:
             - ~/.flowise:/root/.flowise
         entrypoint: /bin/sh -c "sleep 3; flowise start"
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.chat-router.rule=Host(`chat.p4f.green`)"
+          - "traefik.http.routers.chat-router.entrypoints=web-secure"
+          - "traefik.http.routers.chat-router.tls.certresolver=letsencrypt"
+          - "traefik.http.services.chat.loadbalancer.server.port=${PORT}"
