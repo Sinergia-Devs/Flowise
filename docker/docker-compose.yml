@@ -40,7 +40,7 @@ services:
         entrypoint: /bin/sh -c "sleep 3; flowise start"
         labels:
           - "traefik.enable=true"
-          - "traefik.http.routers.chat-router.rule=Host(`chat.p4f.green`)"
-          - "traefik.http.routers.chat-router.entrypoints=web-secure"
-          - "traefik.http.routers.chat-router.tls.certresolver=letsencrypt"
-          - "traefik.http.services.chat.loadbalancer.server.port=${PORT}"
+          - "traefik.http.routers.flowise.rule=Host(`chat.p4f.green`)"
+          - "traefik.http.routers.flowise.entrypoints=web-secure"
+          - "traefik.http.routers.flowise.tls.certresolver=letsencrypt"
+          - "traefik.http.services.flowise.loadbalancer.server.port=${PORT}"
